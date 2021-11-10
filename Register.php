@@ -42,12 +42,12 @@ if(isset($_POST['btnRegister'])){
     else{
         include_once("connection.php");
         $pass = md5($pass1);
-        $sq ="SELECT * FROM customer WHERE Username='$us' OR email='$email'";
+        $sq ="SELECT * FROM customer WHERE username='$us' OR email='$email'";
         $res = mysqli_query($conn,$sq);
         if(mysqli_num_rows($res)==0)
         {
-            mysqli_query($conn, "INSERT INTO customer (Username, Password,Custname,gender,Address,telephone,email,
-            CusDate,CusMonth,CusYear,SSN,ActiveCode,state)
+            mysqli_query($conn, "INSERT INTO customer (username, password,custname,gender,address,telephone,email,
+            cusdate,cusmonth,cusyear,ssn,activeCode,state)
             VALUES ('$us', '$pass', '$fullname', $sex, '$address', '$tel', '$email', $date, $month, $year, '', '', 0)") 
             or die(mysqli_error($conn));
                echo "You have registered successfully";
@@ -64,56 +64,56 @@ if(isset($_POST['btnRegister'])){
 			 	<form id="form1" name="form1" method="post" action="" class="form-horizontal" role="form">
 					<div class="form-group">
 						    
-                            <label for="txtTen" class="col-sm-2 control-label">Username(*):  </label>
+                            <label for="txtTen" class="col-sm-2 control-label">username(*):  </label>
 							<div class="col-sm-10">
 							      <input type="text" name="txtUsername" id="txtUsername" class="form-control" placeholder="Username" value="<?php if(isset ($us)) echo $us?>"/>
 							</div>
                       </div>  
                       
                        <div class="form-group">   
-                            <label for="" class="col-sm-2 control-label">Password(*):  </label>
+                            <label for="" class="col-sm-2 control-label">password(*):  </label>
 							<div class="col-sm-10">
 							      <input type="password" name="txtPass1" id="txtPass1" class="form-control" placeholder="Password"/>
 							</div>
                        </div>     
                        
                        <div class="form-group"> 
-                            <label for="" class="col-sm-2 control-label">Confirm Password(*):  </label>
+                            <label for="" class="col-sm-2 control-label">confirm password(*):  </label>
 							<div class="col-sm-10">
 							      <input type="password" name="txtPass2" id="txtPass2" class="form-control" placeholder="Confirm your Password"/>
 							</div>
                        </div>     
                        
                        <div class="form-group">                               
-                            <label for="lblFullName" class="col-sm-2 control-label">Full name(*):  </label>
+                            <label for="lblFullName" class="col-sm-2 control-label">full name(*):  </label>
 							<div class="col-sm-10">
 							      <input type="text" name="txtFullname" id="txtFullname" value="<?php if(isset($fullname)) echo $fullname;?>" class="form-control" placeholder="Enter Fullname"/>
 							</div>
                        </div> 
                        
                        <div class="form-group">      
-                            <label for="lblEmail" class="col-sm-2 control-label">Email(*):  </label>
+                            <label for="lblEmail" class="col-sm-2 control-label">email(*):  </label>
 							<div class="col-sm-10">
 							      <input type="text" name="txtEmail" id="txtEmail" value="<?php if(isset($email)) echo $email;?>" class="form-control" placeholder="Email"/>
 							</div>
                        </div>  
                        
                         <div class="form-group">   
-                             <label for="lblDiaChi" class="col-sm-2 control-label">Address(*):  </label>
+                             <label for="lblDiaChi" class="col-sm-2 control-label">address(*):  </label>
 							<div class="col-sm-10">
 							      <input type="text" name="txtAddress" id="txtAddress" value="<?php if(isset($address)) echo $address;?>" class="form-control" placeholder="Address"/>
 							</div>
                         </div>  
                         
                          <div class="form-group">  
-                            <label for="lblDienThoai" class="col-sm-2 control-label">Telephone(*):  </label>
+                            <label for="lblDienThoai" class="col-sm-2 control-label">telephone(*):  </label>
 							<div class="col-sm-10">
 							      <input type="text" name="txtTel" id="txtTel" value="<?php if(isset($tel)) echo $tel;?>" class="form-control" placeholder="Telephone" />
 							</div>
                          </div> 
                          
                           <div class="form-group">  
-                            <label for="lblGioiTinh" class="col-sm-2 control-label">Gender(*):  </label>
+                            <label for="lblGioiTinh" class="col-sm-2 control-label">gender(*):  </label>
 							<div class="col-sm-10">                              
                                       <label class="radio-inline"><input type="radio" name="grpRender" value="0" id="grpRender"  />
                                       Male</label>
@@ -140,7 +140,7 @@ if(isset($_POST['btnRegister'])){
                 				 </select>
                                 </span>
                                 <span class="input-group-btn">
-                                  <select name="slMonth" id="slMonth" class="form-control">
+                                  <select name="slmonth" id="slmonth" class="form-control">
                 					<option value="0">Choose Month</option>
 									<?php
                                         for($i=1;$i<=12;$i++)

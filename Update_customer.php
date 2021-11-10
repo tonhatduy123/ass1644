@@ -4,8 +4,8 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <?php
 //Get custmer information
-$query="SELECT CustName, Address, email, telephone
-			FROM customer WHERE Username='". $_SESSION["us"] . "'";
+$query="SELECT custname, address, email, telephone
+			FROM customer WHERE username='". $_SESSION["us"] . "'";
 	$result=mysqli_query($conn,$query) or die(mysqli_error($conn));
 	$row=mysqli_fetch_array($result, MYSQLI_ASSOC);
 	$us=$_SESSION["us"];
@@ -23,15 +23,15 @@ if(isset($_POST['btnUpdate'])){
 		if($_POST['txtPass1']!=""){
 			$pass = md5($_POST['txtPass1']);
 			$sq="UPDATE customer
-			SET CustName='$fullname', Address='$address',
+			SET custname='$fullname', Address='$address',
 			telephone='$tel', Password='$pass' 
-			WHERE Username='" . $_SESSION['us'] . "'";
+			WHERE username='" . $_SESSION['us'] . "'";
 			mysqli_query($conn,$sq) or die(mysqli_error($conn));
 		}
 		else{
 			$sq="UPDATE customer
-			SET CustName='$fullname', Address='$address',
-			telephone='$tel' WHERE Username='" . $_SESSION['us'] . "'";
+			SET custname='$fullname', address='$address',
+			telephone='$tel' WHERE username='" . $_SESSION['us'] . "'";
 			mysqli_query($conn,$sq) or die(mysqli_error($conn));
 		}
 		echo '<meta http-equiv="refresh" content="0;URL=index.php"/>';
